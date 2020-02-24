@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ url_for('static',filename='img/4444.jpg') }}" type="img /x-icon">
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+    <title>{{ name }}'s Watchlish</title>
+</head>
+<body>
+    <h2>
+        <img class='avatar' src="{{ url_for('static',filename='img/dog.jpeg') }}" alt="头像">
+        {{ name }}'s Watchlish
+    </h2>
+    {# 使用过滤器获取movies的长度 #}
+    <p>{{ movies|length }} Titels</p>
+    <ul>
+        {% for movie in movies %}
+        <li>{{  movie.titel }}---{{ movie.year }}</li>
+        {% endfor %}
+    </ul>
+
+    <footer>
+        <small>&copy;2020 <a href="#">北京网络职业技术学院</a></small>
+    </footer>
+    
+    <img class="foot" src="{{ url_for('static',filename='img/1111.jpg') }}" alt="">
+</body>
+</html>
