@@ -59,7 +59,6 @@ nav li a:hover{
 }
 .float-right{
     float: right;
-    display: inline;
     margin: 2px 5px;
 }
 .vbd{
