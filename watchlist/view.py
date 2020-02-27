@@ -22,7 +22,7 @@ def index():
         movie = Movie(title=title, year=year)  # 创建记录
         db.session.add(movie)  # 添加到数据库会话
         db.session.commit()  # 提交数据库会话
-        flash('数据创建成功')
+        flash('添加成功')
         return redirect(url_for('index'))
 
     movies = Movie.query.all()
