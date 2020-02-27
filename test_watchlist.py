@@ -1,5 +1,8 @@
 import unittest
 
+from watchlist import app,db
+from watchlist.model import User,Movie
+
 from app import app, db, Movie, User
 
 
@@ -20,7 +23,7 @@ class WatchlistTestCase(unittest.TestCase):
         db.session.commit()
 
         self.client = app.test_client()  # 创建测试客户端（模拟客户端请求）
-        self.runner = app.test_cli_runner()   # 创建测试命令运行器（触发自定义命令）
+        self.runner = app.test_cli_runner()  # 创建测试命令运行器（触发自定义命令）
 
     def tearDown(self):
         db.session.remove()  # 清除数据库会话
