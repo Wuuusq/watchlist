@@ -14,32 +14,89 @@
 </head>
 
 <body>
-{% for message in get_flashed_messages() %}
-    <div class="alert">{{ message }}</div>
-{% endfor %}
-<h2>
-    <img class="avatar" src="{{ url_for('static',filename='img/4444.jpg') }}" alt="头像">
-    {{ user.name }}'s WatchList
-</h2>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Wuuusq`s电影网</a>
+            </div>
 
-<nav>
-    <ul>
-        <li>
-            <a href="{{ url_for('index') }}">首页</a>
-        </li>
-        <li style="float: right">
-            <a href="{{ url_for('login') }}">登录</a>
-            {% if current_user.is_authenticated %}
-            <a href="{{ url_for('logout') }}">退出</a>
-            <a href="{{ url_for('settings') }}">设置</a>
-            {% endif %}
-        </li>
-    </ul>
-</nav>
-{% block content %} {% endblock %}
-<footer>
-    <small>&copy; 2020 <a href="http://www.baidu.com">北京网络职业技术学院-人工智能学科</a></small>
-</footer>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">暂未开发<span class="sr-only">(current)</span></a></li>
+                    <li><a href="#">暂未开发</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li style="float: right">
+                    <a class="btn btn-success" href="{{ url_for('login') }}" role="button" style="color: red">登录</a>
+                    {% if current_user.is_authenticated %}
+                        <a href="{{ url_for('logout') }}">退出</a>
+                        <a href="{{ url_for('settings') }}">设置</a>
+                    {% endif %}
+                </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <div id="center">
+        <div class="row" style="margin: 30px">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="你想要的都在这里~~">
+                    <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">搜索</button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-lg-4"></div>
+        </div>
+        {% for message in get_flashed_messages() %}
+            <div class="alert">{{ message }}</div>
+        {% endfor %}
+        <h2>
+            <img class="avatar" src="{{ url_for('static',filename='img/4444.jpg') }}" alt="头像">
+            {{ user.name }}'s WatchList
+        </h2>
+        <div id="nav">
+            <div class="nav_1">
+                <a href="{{ url_for('index') }}">首页</a>
+            </div>
+            <div class="nav_2">
+                <a href="#">PASS</a>
+                <a href="#">PASS</a>
+                <a href="#">PASS</a>
+                <a href="#">PASS</a>
+                <a href="#">PASS</a>
+            </div>
+        </div>
+        {% block content %} {% endblock %}
+    </div>
+    <div id="footer">
+        <div>
+            <a class="wei" href="#">关于本站</a>
+            <a class="wei" href="#">客户服务</a>
+            <a class="wei" href="#">服务条款</a>
+            <a class="wei" href="#">网站导航</a>
+            <a class="wei" href="#">意见反馈</a>
+        </div>
+        <div>
+            <p>版权所有©归作者吴诗奇所有：XXX-XXXX-XXXX-XXX[字号]</p>
+        </div>
+        <div>
+            <p>违法和不良信息举报电话：139-XXXX-1159</p>
+            <span>举报邮箱：25XXXX700@qq.com</span>
+        </div>
+    </div>
+
 </body>
 
 </html>

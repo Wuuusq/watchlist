@@ -5,7 +5,7 @@ from flask import render_template
 # 传入要处理的错误代码
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template('404.html'), 404
+    return render_template('errors/404.html'), 404
 
 
 @app.errorhandler(400)  # 传入要处理的错误代码

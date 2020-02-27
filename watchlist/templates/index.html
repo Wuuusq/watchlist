@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <p>{{ movies|length }} Titles</p>
+    <h4>{{ movies|length }} 条结果</h4>
     {# 表单 #}
     {% if current_user.is_authenticated %}
         <form method="POST">
@@ -12,24 +12,29 @@
     {% endif %}
     <ul class="movie-list">
         {% for movie in movies %}
-            <li>
-                {{ movie.title }} - {{ movie.year }}
-                <span class="float-right">
-            <a class="vbd"
-               href="http://v.baidu.com/v?word={{ movie.title }}&ct=301989888&rn=67&pn=0&db=0&s=0&fbl=800&ie=utf-8&oq=nnkd&f=3&rsp=0"
-               target="_blank" title="在IMDb中查找此电影">百度视频</a>
-        </span>
-                {% if current_user.is_authenticated %}
-                    <span class="float-right">
-            <a class="btn" href="{{ url_for('edit',movie_id=movie.id) }}">编辑</a>
-        </span>
-                    <span class="float-right">
-            <form class="inline-form" action="{{ url_for('delete',movie_id=movie.id) }}" method="post">
-                <input type="submit" name='delete' value="删除" onclick="return confirm('确定删除吗？')">
-            </form>
-        </span>
-                {% endif %}
-            </li>
+            <div class="row">
+                <div class="col-sm-6 col-md-12">
+                    <div class="thumbnail">
+                        <img src="{{ url_for('static',filename='img/tupian.jpg') }}" alt="" style="height: 200px;width: 200px;margin: 0">
+                        <div class="caption">
+                            <h3>《{{ movie.title }}》</h3>
+                            <h4>------{{ movie.year }}</h4>
+                            <p>简介：这是一部电影~~~</p>
+                            <p>主演：XXX,XXX,XXX,XXX,XXX,XXX</p>
+                            <p>
+                                {% if current_user.is_authenticated %}
+                                <a href="#" class="btn btn-primary" role="button">Button</a>
+                                <a href="#" class="btn btn-default" role="button">Button</a>
+                                {% endif %}
+                                <span class="float-right">
+                                    <a class="vbd" href="http://v.baidu.com/v?word={{ movie.title }}&ct=301989888&rn=67&pn=0&db=0&s=0&fbl=800&ie=utf-8&oq=nnkd&f=3&rsp=0"
+                                       target="_blank" title="百度视频搜索此视频">点击观看</a>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         {% endfor %}
     </ul>
 
